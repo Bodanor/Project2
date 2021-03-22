@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E7098CF26077CA100CCBEE4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E7098CE26077CA100CCBEE4 /* main.c */; };
+		5E7098D926077CBF00CCBEE4 /* lfsr.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E7098D826077CBF00CCBEE4 /* lfsr.c */; };
+		5E713CCB26092CDA005C1585 /* pnm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E713CC926092CDA005C1585 /* pnm.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,11 @@
 /* Begin PBXFileReference section */
 		5E7098CB26077CA100CCBEE4 /* lfsr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lfsr; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7098CE26077CA100CCBEE4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		5E7098D626077CAF00CCBEE4 /* chiffrement(2).pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "chiffrement(2).pdf"; sourceTree = "<group>"; };
+		5E7098D726077CBF00CCBEE4 /* lfsr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lfsr.h; sourceTree = "<group>"; };
+		5E7098D826077CBF00CCBEE4 /* lfsr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lfsr.c; sourceTree = "<group>"; };
+		5E713CC926092CDA005C1585 /* pnm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pnm.c; sourceTree = "<group>"; };
+		5E713CCA26092CDA005C1585 /* pnm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +48,9 @@
 		5E7098C226077CA100CCBEE4 = {
 			isa = PBXGroup;
 			children = (
+				5E7098CE26077CA100CCBEE4 /* main.c */,
+				5E713CCE26092CF7005C1585 /* Info */,
+				5E713CCD26092CE8005C1585 /* pnm */,
 				5E7098CD26077CA100CCBEE4 /* lfsr */,
 				5E7098CC26077CA100CCBEE4 /* Products */,
 			);
@@ -57,9 +67,27 @@
 		5E7098CD26077CA100CCBEE4 /* lfsr */ = {
 			isa = PBXGroup;
 			children = (
-				5E7098CE26077CA100CCBEE4 /* main.c */,
+				5E7098D726077CBF00CCBEE4 /* lfsr.h */,
+				5E7098D826077CBF00CCBEE4 /* lfsr.c */,
 			);
 			path = lfsr;
+			sourceTree = "<group>";
+		};
+		5E713CCD26092CE8005C1585 /* pnm */ = {
+			isa = PBXGroup;
+			children = (
+				5E713CC926092CDA005C1585 /* pnm.c */,
+				5E713CCA26092CDA005C1585 /* pnm.h */,
+			);
+			path = pnm;
+			sourceTree = "<group>";
+		};
+		5E713CCE26092CF7005C1585 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				5E7098D626077CAF00CCBEE4 /* chiffrement(2).pdf */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +146,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E713CCB26092CDA005C1585 /* pnm.c in Sources */,
+				5E7098D926077CBF00CCBEE4 /* lfsr.c in Sources */,
 				5E7098CF26077CA100CCBEE4 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
