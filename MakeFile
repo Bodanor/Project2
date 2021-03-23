@@ -1,6 +1,6 @@
 ###
 ## Makefile skeleton
-## INFO0030: Projet 2
+## INFO0030: Projet 1
 ##
 ###
 
@@ -56,3 +56,5 @@ seatest.o: seatest.c seatest.h
 
 clean:
 	rm -f *.o $(EXEC) *~
+
+
