@@ -15,6 +15,7 @@
  */
 #ifndef __PNM__
 #define __PNM__
+#include "lfsr.h"
 
 /**
  * Déclaration du type opaque PNM
@@ -69,5 +70,6 @@ int get_header(FILE *pnmFile, PNM *pnmStruct);
 int load_matrix (FILE *pnmFile, PNM *pnmStruct);
 PNM *create_pnm(void);
 void destroy_pnm(PNM *image);
+int transformation(PNM *image, LFSR *lfsr);
 #endif // __PNM__
 

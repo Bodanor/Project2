@@ -7,6 +7,7 @@
 
 #include "lfsr.h"
 
+
 struct LSFSR_t {
     char *seed;
     int tap;
@@ -49,6 +50,7 @@ int operation(LFSR *lfsr)
     strncat(new_seed, &bite, 1);
     
     lfsr->seed = new_seed;
+    
     return bit;
 }
 
@@ -56,16 +58,21 @@ int operation(LFSR *lfsr)
 int generation(LFSR *lfsr, int k)
 {
     int r = 0;
+    int bit = 0;
     
-    for (int i = 0; i < k; i++)
+    for (int i = 0; i < 5; i++)
     {
-        int bit = operation(lfsr);
-        r *= 2;
-        r+= bit;
+        for (int x = 0; x < k; x++)
+        {
+            bit = operation(lfsr);
+            
+        }
+        r*=2;
+        r+=bit;
         
     }
-    
-    
-    
+    printf("%d\n", r);
     return r;
 }
+
+

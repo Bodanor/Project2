@@ -1,13 +1,9 @@
-/**
- * main.c
- *
- * Ce fichier contient la fonction main() du programme de manipulation
- * de fichiers pnm.
- *
- * @author: Papadopoulos Christos S203720
- * @date:
- * @projet: INFO0030 Projet 1
- */
+//
+//  main.c
+//  lfsr
+//
+//  Created by Christos Papadopoulos on 21/03/2021.
+//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +14,7 @@
 #include <string.h>
 
 #include "pnm.h"
+#include "lfsr.h"
 
 //TODO: Rajouter les asserts, verifier les messages d'erreur, nettoyer code, vérifier le output avec les caractères spéciaux, rajouter des commentaires, nettoyer noms des variables.
 
@@ -33,9 +30,12 @@
 
 int main(int argc, char *argv[]) {
    
-   char *optstring = ":f:i:o:";
+   char *optstring = ":f:i:o:s:t:";
    char *inputName = NULL;
    char *outputName = NULL;
+   char *tap = NULL;
+   char *seed = NULL;
+   
    char fileType[4] = {0};
    
    int val = 0;
@@ -93,6 +93,24 @@ int main(int argc, char *argv[]) {
             strcpy(fileType, optarg);
             
             break;
+         case 's':
+            seed = (char*) malloc((strlen(optarg)+1)*sizeof(char));
+            if (seed == NULL)
+            {
+               printf("Malloc error, output name is too long !\n");
+               return -1;
+            }
+            strcpy(seed, optarg);
+            break;
+         case 't':
+            tap = (char*) malloc((strlen(optarg)+1)*sizeof(char));
+            if (tap == NULL)
+            {
+               printf("Malloc error, output name is too long !\n");
+               return -1;
+            }
+            strcpy(tap, optarg);
+            break;
          case '?':
             printf("Unknown option -%c\n", optopt);
             break;
@@ -109,7 +127,7 @@ int main(int argc, char *argv[]) {
       printf("Non-option argument : %s\n", argv[index]);
    }
    
-   if (inputName != NULL && outputName != NULL && (strlen(fileType)) != 0)
+   if (inputName != NULL && outputName != NULL && (strlen(fileType)) != 0 && seed != NULL && tap != NULL)
    {
       char *extensionInput = inputName;
       if((extensionInput = strrchr(inputName, '.')) != NULL)
@@ -131,7 +149,7 @@ int main(int argc, char *argv[]) {
       {
          printf("The file extension in the input does not match the file format entered !\n");
          return -1;
-      
+         
       }
       
       char *extensionOutput = outputName;
@@ -187,6 +205,20 @@ int main(int argc, char *argv[]) {
             return -1;
       }
       
+      for (int i = 0; i < strlen(tap); i++)
+      {
+         if (!isdigit(tap[i]))
+         {
+            printf("Bad tap number !\n");
+            return -3;
+         }
+      }
+      int tapNb = 0;
+      tapNb = atoi(tap);
+      
+      LFSR *lfsr = initialisation(seed, tapNb);
+      transformation(pnm_struct, lfsr);
+      
       status = 0;
       status = write_pnm(pnm_struct, outputName);
       switch(status)
@@ -215,8 +247,11 @@ int main(int argc, char *argv[]) {
       printf("Usage :\n");
       printf("\t -i : input File to read from.\n");
       printf("\t -o : output File to write to.\n");
-      printf("\t -f : the file format we read from.\n\n");
+      printf("\t -f : the file format we read from.\n");
+      printf("\t -t : the tap number.\n");
+      printf("\t -s : the seed string.\n\n");
       
    }
    return 0;
 }
+

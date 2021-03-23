@@ -11,6 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+
+
 typedef struct LSFSR_t LFSR;
 
 

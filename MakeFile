@@ -1,0 +1,58 @@
+###
+## Makefile skeleton
+## INFO0030: Projet 2
+##
+###
+
+## Variables
+
+# Tools & flags
+CC=gcc
+CFLAGS=--std=c99 --pedantic -Wall -W -Wmissing-prototypes
+LD=gcc
+LDFLAGS=
+
+# Files
+EXEC=basic_cipher advanced_cipher pnm_tests lfsr_tests
+OBJ_BASIC_CIPHER=main_basic_cipher.o pnm.o lfsr.o
+OBJ_ADVANCED_CIPHER=main_advanced_cipher.o pnm.o basic_cipher.o advanced_cipher.o lfsr.o
+OBJ_TEST_LFSR=lfsr_tests.o seatest.o lfsr.o
+OBJ_TEST_PNM=pnm_tests.o seatest.o pnm.o
+
+#executable
+basic_cipher: $(OBJ_BASIC_CIPHER)
+	$(LD) -o basic_cipher $(OBJ_BASIC_CIPHER) $(LDFLAGS)
+
+advanced_cipher: $(OBJ_ADVANCED_CIPHER)
+	$(LD) -o advanced_cipher $(OBJ_ADVANCED_CIPHER) $(LDFLAGS)
+
+lsfr_tests: $(OBJ_TEST_LFSR)
+	$(CC) -o lfsr_tests $(OBJ_TEST_LFSR) $(CFLAGS)
+
+pnm_tests: $(OBJ_TEST_PNM)
+	$(CC) -o pnm_tests $(OBJ_TEST_PNM) $(CFLAGS)
+
+#fichier OBJ
+main_basic_cipher.o: main_basic_cipher.c
+	$(CC) -c main_basic_cipher.c -o main_basic_cipher.o $(CFLAGS)
+
+main_advanced_cipher.o: main_advancer_cipher.c
+	$(CC) -c main_advanced_cipher.c -o main_advanced_cipher.o $(CFLAGS)
+
+pnm.o: pnm.c pnm.h
+	$(CC) -c pnm.c -o pnm.o $(CFLAGS)
+
+lfsr.o: lfsr.c lfsr.h
+	$(CC) -c lfsr.c -o lfsr.o $(CFLAGS)
+
+basic_cipher.o: basic_cipher.c basic_cipher.h
+	$(CC) -c basic_cipher.c -o basic_cipher.o $(CFLAGS)
+
+advanced_cipher.o: advanced_cipher.c advanced_cipher.h
+	$(CC) -c advanced_cipher.c -o advanced_cipher.o $(CFLAGS)
+
+seatest.o: seatest.c seatest.h
+	$(CC) -c seatest.c -o seatest.o $(CFLAGS)
+
+clean:
+	rm -f *.o $(EXEC) *~

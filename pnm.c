@@ -223,10 +223,9 @@ int get_header(FILE *pnmFile, PNM *pnmStruct)
             
             character = fgetc(pnmFile);
          }
-         
          while (character != ' ' && character != '\n' && character != '\r')
          {
-            
+             
             char *arr = realloc(rows, strlen(rows)+2);
             if (arr == NULL)
             {
@@ -554,3 +553,20 @@ int get_magic_number(char *filename, FILE *pnmFile, PNM *image)
    return 0;
 }
 
+
+int transformation(PNM *image, LFSR *lfsr)
+{
+    for (int i = 0; i < image->rows; i++)
+    {
+        for (int j = 0; j < image->columns; j++)
+        {
+            int bit = generation(lfsr, 32);
+            image->matrix[i][j] = image->matrix[i][j]^bit;
+            
+            
+        }
+    }
+    
+    
+    return 0;
+}

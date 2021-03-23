@@ -26,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		5E7098CB26077CA100CCBEE4 /* lfsr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lfsr; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E7098CE26077CA100CCBEE4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		5E7098CE26077CA100CCBEE4 /* main.c */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; tabWidth = 3; };
 		5E7098D626077CAF00CCBEE4 /* chiffrement(2).pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "chiffrement(2).pdf"; sourceTree = "<group>"; };
 		5E7098D726077CBF00CCBEE4 /* lfsr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lfsr.h; sourceTree = "<group>"; };
 		5E7098D826077CBF00CCBEE4 /* lfsr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lfsr.c; sourceTree = "<group>"; };
